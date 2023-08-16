@@ -1,55 +1,42 @@
+<%- include('partials/head') %>
 <%- include('partials/nav') %>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Express validator</title>
-    <style>
-        body{
-            align-items: center;
-            padding-top: 40px;
-            padding-bottom: 40px;
-            background-color: rgb(156, 170, 156);
-        }
-    </style>
-</head>
-<body>
     
-<!-- <div class="container mt-5"> -->
-</div>
+<div class="container">
+    <br>
+    <h1>express validator</h1>
+    <br>
     <form action="/registrar" method="POST">
         <div class="mb-3">
           <label for="nya" class="form-label">Nombre completo</label>
-          <input type="text" class="form-control" id="nya" name="nya">
+        <input type="text" class="form-control" id="nya" name="nya" value="<% if(typeof valores != 'undefined'){ %><%=valores.nya %><%} %> " > 
+
         </div>
 
         <div class="mb-3">
             <label for="correo" class="form-label">correo</label>
-            <input type="text" class="form-control" id="correo" name="correo">
+            <input type="email" class="form-control" id="correo" name="correo" value="<% if(typeof valores != 'undefined'){ %><%=valores.correo %><%} %> " > 
         </div>
 
         <div class="mb-3">
             <label for="edad" class="form-label">Edad</label>
-            <input type="text" class="form-control" id="edad" name="edad">
+            <input type="number" class="form-control" id="edad" name="edad"
+            value="<% if(typeof valores != 'undefined'){ %><%=valores.edad %><%} %> " > 
         </div>
       
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-warning">Enviar</button>
       </form>
+      
+       
+           <% if(typeof validaciones != 'undefined') { %>
+            <% validaciones.forEach( (valores) => {  %> 
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong><%= valores.msg %></strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <% }) %>
+          <% } %>
+    </div>
 </body>
-
-<!-- <% if(typeo validaciones != "undefined"){ %>}
-    <% validaciones.forEach( (validacion)=>{ %>
-          
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong> <%= validacion.msg %></strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>  
-      <% }) %>
-    <% } %> -->
-
-<!-- </div> -->
 
 </html>
 <%- include('partials/footer') %>

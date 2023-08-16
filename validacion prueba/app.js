@@ -1,45 +1,43 @@
-const express =require("express")
-const app=express()
-
-const {body, validationResult}=require("express-validator")
-
+const express = require('express')
+const app = express()
+const {body, validationResult} = require('express-validator')
 app.use(express.json())
-app.set("view engine", "ejs")
+app.set('view engine', 'ejs')
 app.use(express.urlencoded({extended:true}))
 
-app.get("/", (req, res)=>{
-    res.render("index")
+app.get('/', (req, res)=>{
+    res.render('index')
 })
 
-app.post("/registrar", [
-   body("nya", "ingrese un nombre y apellido completo")
-    .exists()
-    .isLength({min:5}),
-   body("correo", "ingrese un email valido")
-    .exists()
-    .isEmail(),
-   body("edad", "ingrese un valor numerico")
-    .exists()
-    .isNumeric()
+app.post('/registrar', [
+    body('nya', 'Ingrese un nombre y apellido completo')
+        .exists()
+        .isLength({min:9}),
+    body('correo', 'Ingrese un E-mail válido')
+        .exists()
+        .isEmail(),
+    body('edad', 'Ingrese un valor numérico')        
+        .exists()
+        .isNumeric()
 ], (req, res)=>{
-    // const errors=validationResult(req);
-    // if(!errors.isEmpty()){
-    //     res.status(400).json({errors: errors.array()});
-    //     console.log(errors)
-    // }
+    //Validación de la documentación oficial
+    /* const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.status(400).json({ errors: errors.array() });
+      console.log(errors)
+    } */
 
-    const errors=validationResult(req)
-    if(!errors.isEmpty()){
+    //validación propia    
+     const errors = validationResult(req)
+    if (!errors.isEmpty()) {
         console.log(req.body)
-        const valores=req.body
-        const validaciones=errors.array()
-        res.render("index", {validaciones:validaciones, valores:valores})
+        const valores = req.body
+        const validaciones = errors.array()
+        res.render('index', {validaciones:validaciones, valores: valores})
     }else{
-        res.send("validacion exitosa")
+        res.send('¡Validación Exitosa!')
     }
 })
-
-
-app.listen(3110, ()=>{
-    console.log("el server esta escuchando ")
+app.listen(3000, ()=>{
+    console.log('SERVER UP en http://localhost:3000')
 })

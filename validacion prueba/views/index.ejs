@@ -1,0 +1,41 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express validator</title>
+    <style>
+        body{
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: rgb(156, 170, 156);
+        }
+    </style>
+</head>
+<body>
+
+    <form action="/registar" method="POST">
+        <div class="mb-3">
+          <label for="nya" class="form-label">Nombre completo</label>
+          <input type="text" class="form-control" id="nya" name="nya" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="correo" class="form-label">correo</label>
+            <input type="email" class="form-control" id="correo" name="correo" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="edad" class="form-label">Edad</label>
+            <input type="number" class="form-control" id="edad" name="edad" required>
+        </div>
+      
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</body>
+</html>
+<%- include('partials/footer') %>

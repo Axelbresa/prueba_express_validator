@@ -17,25 +17,33 @@
     </style>
 </head>
 <body>
-
-    <form action="/registar" method="POST">
+    
+<div class="container mt-5">
+</div>
+    <form action="/registrar" method="POST">
         <div class="mb-3">
           <label for="nya" class="form-label">Nombre completo</label>
-          <input type="text" class="form-control" id="nya" name="nya" required>
+          <input type="text" class="form-control" id="nya" name="nya">
         </div>
 
         <div class="mb-3">
             <label for="correo" class="form-label">correo</label>
-            <input type="email" class="form-control" id="correo" name="correo" required>
+            <input type="text" class="form-control" id="correo" name="correo">
         </div>
 
         <div class="mb-3">
             <label for="edad" class="form-label">Edad</label>
-            <input type="number" class="form-control" id="edad" name="edad" required>
+            <input type="text" class="form-control" id="edad" name="edad">
         </div>
       
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
 </body>
+
+<% if(typeo validaciones != "undefined"){ %>
+    <% } %>
+
+</div>
+
 </html>
 <%- include('partials/footer') %>

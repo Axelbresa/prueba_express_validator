@@ -40,6 +40,6 @@ app.post("/registrar", [
 })
 
 
-app.listen(3000, ()=>{
-    console.log("el server esta escuchando")
+app.listen(3110, ()=>{
+    console.log("el server esta escuchando ")
 })
